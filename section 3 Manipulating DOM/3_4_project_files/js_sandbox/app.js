@@ -17,7 +17,7 @@
 // lis[0].style.color = 'red';
 // lis[3].textContent = 'Hello';
 
-// // Conver HTML Collection into array
+// // Convert HTML Collection into array
 // lis = Array.from(lis);
 
 // lis.reverse();
