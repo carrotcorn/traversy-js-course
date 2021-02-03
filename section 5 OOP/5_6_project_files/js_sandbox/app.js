@@ -1,6 +1,8 @@
+//es6 notation syntax
+
 class Person {
   constructor(firstName, lastName, dob) {
-    this.firstName = firstName;
+    this.firstName = firstName; //this can be used anywhere in the class
     this.lastName = lastName;
     this.birthday = new Date(dob);
   }
@@ -24,10 +26,10 @@ class Person {
   }
 }
 
-const mary = new Person('Mary', 'Williams', '11-13-1980');
+const mary = new Person("Mary", "Williams", "11-13-1980");
 
-mary.getsMarried('Thompson');
+mary.getsMarried("Thompson");
 
 console.log(mary);
 
-console.log(Person.addNumbers(1,2));
+console.log(Person.addNumbers(1, 2));
