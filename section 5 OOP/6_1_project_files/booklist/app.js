@@ -8,10 +8,10 @@ function Book(title, author, isbn) {
 // UI Constructor
 function UI() {}
 
-//add book to list
+// add book to list
 UI.prototype.addBookToList = function (book) {
   const list = document.getElementById("book-list");
-  //create element
+  // create element
   const row = document.createElement("tr");
   // insert cols
   row.innerHTML = `
@@ -22,21 +22,27 @@ UI.prototype.addBookToList = function (book) {
    `;
 
   list.appendChild(row);
-  console.log(row);
+
 };
 //show alert
 UI.prototype.showAlert = function (message, className) {
+
   // create div
   const div = document.createElement("div");
+
   // add classes
   div.className = `alert ${className}`;
+
   // add text
   div.appendChild(document.createTextNode(message));
+
   // get parent
   const container = document.querySelector(".container");
   const form = document.querySelector("#book-form");
+
   //insert alert
   container.insertBefore(div, form);
+
   //timeout after 3 seconds
   setTimeout(function () {
     document.querySelector(".alert").remove();
@@ -52,12 +58,13 @@ UI.prototype.clearFields = function () {
 
 // Event Listeners
 document.getElementById("book-form").addEventListener("submit", function (e) {
-  //get form values
+
+  // get form values
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const isbn = document.getElementById("isbn").value;
 
-  //instantiate book object
+  // Instantiate book object
   const book = new Book(title, author, isbn);
 
   // Instantiate UI
@@ -65,16 +72,17 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
 
   // Validate
   if (title === "" || author === "" || isbn === "") {
-    //error alert in ui
+    // Error alert in ui
     ui.showAlert("please fill out all fields");
   } else {
+     
     // Add book to list
     ui.addBookToList(book);
 
-    //clear fields
+    // Clear fields
     ui.clearFields();
   }
 
-  //   console.log("test");
+  // console.log("test");
   e.preventDefault();
 });
