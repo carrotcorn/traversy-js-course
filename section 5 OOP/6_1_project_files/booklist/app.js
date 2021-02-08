@@ -51,6 +51,14 @@ UI.prototype.showAlert = function (message, className) {
   }, 2300);
 };
 
+// Delete Book
+UI.prototype.deleteBook(target){
+  if(target.className === "delete"){
+    target.parentElement.parentElement.remove//DOM traversing up the html tags twice. using parentElement twice traverses the DOM two tags above, the is removed w/ .remove
+  }
+}
+
+
 // clear fields
 UI.prototype.clearFields = function () {
   document.getElementById("title").value = "";
@@ -59,6 +67,7 @@ UI.prototype.clearFields = function () {
 };
 
 // Event Listeners
+// Event Listeners for add book
 document.getElementById("book-form").addEventListener("submit", function (e) {
   // get form values
   const title = document.getElementById("title").value;
@@ -84,5 +93,11 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
     ui.clearFields();
   }
   console.log("is working");
+  e.preventDefault();
+});
+
+// Event Listener for Delete
+document.getElementById("book-list").addEventListener("click", function (e) {
+  console.log(12434);
   e.preventDefault();
 });
