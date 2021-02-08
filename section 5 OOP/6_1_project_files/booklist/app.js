@@ -78,12 +78,11 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
   } else {
     // Add book to list
     ui.addBookToList(book);
-    ui.showAlert("Added book to list", "success"); // message that shows in alert. className is the style class in HTML style which is red for error or green for success.
+    ui.showAlert("Added book to list", "success"); // message that shows in alert. className is the style class in HTML style which is red for error or green for success. The style class has to be within "" to make a string, or else it will pull a variable within the file
 
     // Clear fields
     ui.clearFields();
   }
-
-  // console.log("test");
+  console.log("is working");
   e.preventDefault();
 });
