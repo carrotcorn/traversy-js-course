@@ -26,6 +26,7 @@ UI.prototype.addBookToList = function (book) {
 };
 //show alert
 UI.prototype.showAlert = function (message, className) {
+  //function (message "what i wanna say", className "style className in HTML")
   if (document.querySelector(`.alert.${className}`)) return; // does not duplicate error message when clicking the submit multiple times within the timeout
 
   // create div
@@ -47,7 +48,7 @@ UI.prototype.showAlert = function (message, className) {
   //timeout after 3 seconds
   setTimeout(function () {
     document.querySelector(".alert").remove();
-  }, 3000);
+  }, 2300);
 };
 
 // clear fields
@@ -73,10 +74,11 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
   // Validate empty form fields
   if (title === "" || author === "" || isbn === "") {
     // Error alert in ui
-    ui.showAlert("please fill out all fields"); // message that shows in alert
+    ui.showAlert("please fill out all fields", "error"); // message that shows in alert
   } else {
     // Add book to list
     ui.addBookToList(book);
+    ui.showAlert("added", "success"); // message that shows in alert. className is the style class in HTML style which is red for error or green for success.
 
     // Clear fields
     ui.clearFields();
