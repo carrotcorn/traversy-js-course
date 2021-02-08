@@ -74,11 +74,11 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
   // Validate empty form fields
   if (title === "" || author === "" || isbn === "") {
     // Error alert in ui
-    ui.showAlert("please fill out all fields", "error"); // message that shows in alert
+    ui.showAlert("Please fill out all fields", "error"); // message that shows in alert
   } else {
     // Add book to list
     ui.addBookToList(book);
-    ui.showAlert("added", "success"); // message that shows in alert. className is the style class in HTML style which is red for error or green for success.
+    ui.showAlert("Added book to list", "success"); // message that shows in alert. className is the style class in HTML style which is red for error or green for success.
 
     // Clear fields
     ui.clearFields();
