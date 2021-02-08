@@ -13,7 +13,8 @@ UI.prototype.addBookToList = function (book) {
   const list = document.getElementById("book-list");
   // create element
   const row = document.createElement("tr");
-  // insert cols
+
+  // insert columns
   row.innerHTML = `
    <td>${book.title}</td>
    <td>${book.author}</td>
@@ -21,11 +22,11 @@ UI.prototype.addBookToList = function (book) {
    <td><a href="#" class="delete">X</td>
    `;
 
-  list.appendChild(row);
-
+  list.appendChild(row); //inserts row
 };
 //show alert
 UI.prototype.showAlert = function (message, className) {
+  if (document.querySelector(`.alert.${className}`)) return; // does not duplicate error message when clicking the submit multiple times within the timeout
 
   // create div
   const div = document.createElement("div");
@@ -40,13 +41,13 @@ UI.prototype.showAlert = function (message, className) {
   const container = document.querySelector(".container");
   const form = document.querySelector("#book-form");
 
-  //insert alert
-  container.insertBefore(div, form);
+  // insert alert
+  container.insertBefore(div, form); // .insertBefore(whatIWantToInsert, whatToInsertBefore)
 
   //timeout after 3 seconds
   setTimeout(function () {
     document.querySelector(".alert").remove();
-  },3000);
+  }, 3000);
 };
 
 // clear fields
@@ -58,7 +59,6 @@ UI.prototype.clearFields = function () {
 
 // Event Listeners
 document.getElementById("book-form").addEventListener("submit", function (e) {
-
   // get form values
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
@@ -70,12 +70,11 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
   // Instantiate UI
   const ui = new UI();
 
-  // Validate
+  // Validate empty form fields
   if (title === "" || author === "" || isbn === "") {
     // Error alert in ui
-    ui.showAlert("please fill out all fields");
+    ui.showAlert("please fill out all fields"); // message that shows in alert
   } else {
-     
     // Add book to list
     ui.addBookToList(book);
 
