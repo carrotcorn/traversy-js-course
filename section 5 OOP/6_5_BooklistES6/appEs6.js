@@ -62,6 +62,7 @@ class UI {
 //
 //
 //
+//
 // Event Listeners
 // Event Listeners for add book starting from form tag on html
 document.getElementById("book-form").addEventListener("submit", function (e) {
