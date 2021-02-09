@@ -65,7 +65,14 @@ UI.prototype.clearFields = function () {
   document.getElementById("author").value = "";
   document.getElementById("isbn").value = "";
 };
-
+//
+//
+//
+//
+//
+//
+//
+//
 // Event Listeners
 // Event Listeners for add book
 document.getElementById("book-form").addEventListener("submit", function (e) {
@@ -80,7 +87,7 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
   // Instantiate UI
   const ui = new UI();
   console.log(ui);
-  
+
   // Validate empty form fields
   if (title === "" || author === "" || isbn === "") {
     // Error alert in ui
