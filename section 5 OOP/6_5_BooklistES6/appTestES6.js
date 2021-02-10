@@ -25,9 +25,31 @@ class UI {
     list.appendChild(row);
     console.log("adding row function");
   }
-  showAlert(message, className) {}
+  showAlert(message, className) {
+    //show alert in text node element above
+    //below makes the alert only show once upon clicking submit
+    if (document.querySelector(`.alert.${className}`)) return;
+    //create html tag
+    const div = document.createElement("div");
+    //create class
+    div.className = `alert ${className}`;
+    //create text
+    div.appendChild(document.createTextNode(message));
+    //get parent node
+    const container = document.getElementsByClassName("container");
+    const form = document.querySelector("#book-form"); // with querySlector() need to use # or . notation for identifying either the ID or ClassName. I can use getElementById.
+
+    container.insertBefore(p, form);
+
+    // set timeOut
+    setTimeout(() => {
+      document.querySelector(".alert").remove();
+    }, 3000);
+  }
   deleteBook(target) {}
-  clearFields() {}
+  clearFields() {
+    //clear text within the form
+  }
 }
 //
 //
@@ -37,7 +59,7 @@ class UI {
 //Add Book Event Listener
 
 document
-  .getElementById("book-list")
+  .getElementById("book-form")
   .addEventListener("submit", function (event) {
     //get form values
     const title = document.getElementById("title").value;

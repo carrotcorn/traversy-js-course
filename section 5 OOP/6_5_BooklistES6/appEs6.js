@@ -38,6 +38,8 @@ class UI {
     //insert alert
     container.insertBefore(div, form);
     //set timeout
+    //
+    //
     setTimeout(function () {
       document.querySelector(".alert").remove();
     }, 3000);
