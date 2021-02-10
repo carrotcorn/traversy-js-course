@@ -37,7 +37,8 @@ class UI {
     div.appendChild(document.createTextNode(message));
     //get parent node
     const container = document.getElementsByClassName("container");
-    const form = document.querySelector("#book-form"); // with querySlector() need to use # or . notation for identifying either the ID or ClassName. I can use getElementById.
+    const form = document.querySelector("#book-form");
+    // with querySelector() need to use # or . notation for identifying either the ID or ClassName. I can use getElementById.
 
     container.insertBefore(p, form);
 
