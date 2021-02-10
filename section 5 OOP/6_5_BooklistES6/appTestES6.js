@@ -37,6 +37,11 @@ class UI {
 //Add Book Event Listener
 document.getElementById("book-list").addEventListener("submit", function(event){
 //get form values
+const title = document.getElementById("title").value;
+const author = document.getElementById("author").value;
+const isbn = document.getElementById("isbn").value;
+
+
 
 
 
