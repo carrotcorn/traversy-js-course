@@ -1,5 +1,6 @@
 //ES6 Syntax
 class Book {
+  //properties of object
   constructor(title, author, isbn) {
     this.title = title;
     this.author = author;
