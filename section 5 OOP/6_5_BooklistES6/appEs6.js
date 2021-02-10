@@ -90,11 +90,12 @@ document.getElementById("book-form").addEventListener("submit", function (e) {
   e.preventDefault();
 });
 // Event Listener for delete
-document.getElementById("book-list").addEventListener("submit", function (e) {
+document.getElementById("book-list").addEventListener("click", function (e) {
+  console.log("press delete");
   // Instantiate UI
   const ui = new UI();
   //delete book
-  ui.deleteBook(target);
+  ui.deleteBook(e.target);
   // Show Alert
   ui.showAlert("Book deleted from list", "success");
   //
