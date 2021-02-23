@@ -20,7 +20,7 @@ class UI {
      <td>${book.title}</td>
      <td>${book.author}</td>
      <td>${book.isbn}</td>
-     <td><a href="#">Daaaaleete<a></td>
+     <td><a href="#" class="delete">Daaaaaaleeetee<a></td>
      `;
     list.appendChild(row);
     console.log("adding row function");
@@ -47,16 +47,19 @@ class UI {
     // set timeOut
     setTimeout(() => {
       document.querySelector(".alert").remove();
-    }, 3000);
+    }, 2000);
   }
   deleteBook(target) {
-    if (target.className === "Daaaaleete") {
-      document.parentElement.parentElement.remove();
+    if (target.className === "delete") {
+      target.parentElement.parentElement.remove();
       console.log("delete works");
     }
   }
   clearFields() {
     //clear text within the form
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("isbn").value = "";
   }
 }
 //
@@ -88,6 +91,7 @@ document
     } else {
       ui.addBookToList(book); //creates instance of object
       ui.showAlert("Added Book!!!", "success");
+      ui.clearFields();
       console.log("successfully added book");
     }
 
@@ -106,5 +110,6 @@ document.getElementById("book-list").addEventListener("click", (event) => {
   ui.deleteBook(event.target);
 
   console.log("delete click works");
+
   event.preventDefault();
 });
