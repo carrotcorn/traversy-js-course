@@ -32,22 +32,29 @@ class UI {
     //create html tag
     const div = document.createElement("div");
     //create class
-    div.className = `alert ${className}`;
+    div.className = `alert ${className}`; // in the if statement, the
+    // querySelector is referencing the alert thats being created here
+    //
     //create text
     div.appendChild(document.createTextNode(message));
     //get parent node
-    const container = document.getElementsByClassName("container");
+    const container = document.querySelector(".container"); //have to use querySelector() to be able to use "insertBefore()"
     const form = document.querySelector("#book-form");
     // with querySelector() need to use # or . notation for identifying either the ID or ClassName. I can use getElementById.
 
-    container.insertBefore(p, form);
+    container.insertBefore(div, form);
 
     // set timeOut
     setTimeout(() => {
       document.querySelector(".alert").remove();
     }, 3000);
   }
-  deleteBook(target) {}
+  deleteBook(target) {
+    if (target.className === "Daaaaleete") {
+      document.parentElement.parentElement.remove();
+      console.log("delete works");
+    }
+  }
   clearFields() {
     //clear text within the form
   }
@@ -72,6 +79,7 @@ document
 
     const book = new Book(title, author, isbn);
     const ui = new UI();
+    console.log("ui");
 
     //validation
     if (title === "" || author === "" || isbn === "") {
@@ -86,4 +94,17 @@ document
     event.preventDefault();
   });
 //
+//
+//
 //Delete Handler Listener
+document.getElementById("book-list").addEventListener("click", (event) => {
+  //using arrow function ^
+  //instantiate UI
+  const ui = new UI();
+  // call functions to be used within the event handler
+  ui.showAlert("Book Deleted", "success");
+  ui.deleteBook(event.target);
+
+  console.log("delete click works");
+  event.preventDefault();
+});
