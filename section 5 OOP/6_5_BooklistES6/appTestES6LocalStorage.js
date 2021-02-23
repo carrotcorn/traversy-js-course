@@ -62,6 +62,32 @@ class UI {
     document.getElementById("isbn").value = "";
   }
 }
+// Adding local storage class
+class Store {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem("books") === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem("books"));
+    }
+
+    return books;
+  }
+  //
+  static displayBooks() {}
+  //
+  static addBook(book) {
+    const books = Store.getBooks();
+
+    books.push(book);
+
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+
+  //
+  static removeBook() {}
+}
 //
 //
 //
@@ -90,6 +116,10 @@ document
       console.log("empty fields");
     } else {
       ui.addBookToList(book); //creates instance of object
+      //
+      //add book to local storage
+      Store.addBook(book);
+
       ui.showAlert("Added Book!!!", "success");
       ui.clearFields();
       console.log("successfully added book");
