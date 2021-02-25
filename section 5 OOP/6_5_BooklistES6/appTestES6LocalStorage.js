@@ -50,6 +50,7 @@ class UI {
     }, 2000);
   }
   deleteBook(target) {
+    // when eventListener clicked "the delete icon" target is the icon, then the parentElement is the li, then another li, then the whole line is removed from the UI
     if (target.className === "delete") {
       target.parentElement.parentElement.remove();
       console.log("delete works");
@@ -93,7 +94,19 @@ class Store {
     localStorage.setItem("books", JSON.stringify(books));
   }
   //
-  static removeBook() {}
+  static removeBook(isbn) {
+    const books = Store.getBooks();
+
+    books.forEach((book, index) => {
+      if (book.isbn == isbn) {
+        books.splice(index, 1);
+      }
+    });
+    localStorage.setItem("books", JSON.stringify(books));
+
+    //shows that im targeting the isbn in the console via the eventListener
+    console.log(isbn);
+  }
 }
 // DOM Load Event from localStorage from refresh
 document.addEventListener("DOMContentLoaded", Store.displayBooks);
@@ -147,8 +160,12 @@ document.getElementById("book-list").addEventListener("click", (event) => {
   const ui = new UI();
   // call functions to be used within the event handler
   ui.showAlert("Book Deleted", "success");
+  // passing target from deleteBook()
   ui.deleteBook(event.target);
-
+  // remove from localStorage via targeting the "ISBN". target is the <a>, then parent is the <td>. use previous element sibling, then text content to delete the content of the td within the ISBN
+  Store.removeBook(
+    event.target.parentElement.previousElementSibling.textContent
+  );
   console.log("delete click works");
 
   event.preventDefault();
