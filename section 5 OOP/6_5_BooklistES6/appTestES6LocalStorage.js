@@ -71,23 +71,32 @@ class Store {
     } else {
       books = JSON.parse(localStorage.getItem("books"));
     }
-
     return books;
   }
   //
-  static displayBooks() {}
+  static displayBooks() {
+    // create const var books and call getBooks()
+    const books = Store.getBooks();
+    // loop thru books array thats created in the localStorage
+    books.foreach((book) => {
+      // instantiate UI var
+      const ui = new UI();
+      // add book to UI
+      ui.addBookToList(book);
+    });
+  }
   //
   static addBook(book) {
     const books = Store.getBooks();
-
-    books.push(book);
-
+    books.push(book); //adding book into object array within local storage in the browser
     localStorage.setItem("books", JSON.stringify(books));
   }
-
   //
   static removeBook() {}
 }
+// DOM Load Event from localStorage from refresh
+document.addEventListener("DOMContentLoaded", Store.displayBooks());
+
 //
 //
 //
