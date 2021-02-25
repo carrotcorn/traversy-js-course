@@ -78,7 +78,8 @@ class Store {
     // create const var books and call getBooks()
     const books = Store.getBooks();
     // loop thru books array thats created in the localStorage
-    books.foreach((book) => {
+    books.forEach((book) => {
+      //forEach has to have the E uppercase
       // instantiate UI var
       const ui = new UI();
       // add book to UI
