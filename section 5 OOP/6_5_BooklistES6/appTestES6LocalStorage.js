@@ -95,7 +95,7 @@ class Store {
   static removeBook() {}
 }
 // DOM Load Event from localStorage from refresh
-document.addEventListener("DOMContentLoaded", Store.displayBooks());
+document.addEventListener("DOMContentLoaded", Store.displayBooks);
 
 //
 //
