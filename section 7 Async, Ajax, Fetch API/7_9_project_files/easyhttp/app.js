@@ -34,19 +34,19 @@ const data = {
 // });
 
 // Update Post
-http.put('https://jsonplaceholder.typicode.com/posts/5', data, function(err, post) {
-  if(err) {
-    console.log(err);
-  } else {
-    console.log(post);
-  }
-});
-
-// // Delete Post
-// http.delete('https://jsonplaceholder.typicode.com/posts/1', function(err, response) {
+// http.put('https://jsonplaceholder.typicode.com/posts/5', data, function(err, post) {
 //   if(err) {
 //     console.log(err);
 //   } else {
-//     console.log(response);
+//     console.log(post);
 //   }
 // });
+
+// // Delete Post
+http.delete('https://jsonplaceholder.typicode.com/posts/1', function(err, response) {
+  if(err) {
+    console.log(err);
+  } else {
+    console.log(response);
+  }
+});

@@ -41,7 +41,7 @@ const data = {
 // });
 
 // Delete post
-http.delete("https://jsonplaceholder.typicode.com/posts", data, (err, res) => {
+http.delete("https://jsonplaceholder.typicode.com/posts/1", (err, res) => {
   if (err) {
     console.log(err);
   } else {

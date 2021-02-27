@@ -48,7 +48,7 @@ easyHTTP.prototype.delete = function (url, callback) {
   // dont need to use self due to use of arrow functions
   this.http.onload = () => {
     if (this.http.status === 200) {
-      callback(null, this.http.responseText);
+      callback(null, "post deletedddd");
     } else {
       callback("Error: " + this.http.status);
     }
