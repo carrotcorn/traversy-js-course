@@ -17,7 +17,7 @@
 //   return 'Hello';
 // }
 
-// Return object
+// Return object = wrapping {object} in () like ({object})
 // const sayHello = () => ({ msg: 'Hello' });
 
 // Single param does not need parenthesis

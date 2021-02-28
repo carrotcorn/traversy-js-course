@@ -62,9 +62,7 @@ function getExternal() {
       });
       document.getElementById("output").innerHTML = output;
     }) //cannot be any semi colons
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch((err) => console.log(err));
 }
 function handleErrors(res) {
   if (!res) throw new Error(res.error);
