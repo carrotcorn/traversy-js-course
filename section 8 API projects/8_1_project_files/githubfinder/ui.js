@@ -50,19 +50,19 @@ class UI {
    container.insertBefore(div, search);
 
    // Timeout after 3 sec
-   setTimeout(() => {
-     this.clearAlert();
-   }, 3000);
+   setTimeout(()=>{
+      this.clearAlert();
+   }, 3000)
  }
 
  // Clear alert message
- clearAlert() {
+clearAlert(){
    const currentAlert = document.querySelector('.alert');
 
    if(currentAlert){
-     currentAlert.remove();
+      currentAlert.remove();
    }
- }
+}
 
  // Clear profile
  clearProfile() {
