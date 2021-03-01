@@ -1,14 +1,15 @@
-//initialize GitHub class
-const github = new Github();
-//initialize UI class
-const ui = new UI();
 
-//search input
-const searchUser = document.getElementById("searchUser");
+// Init Github
+const github = new Github;
+// Init UI
+const ui = new UI;
 
-//search input event listener
-searchUser.addEventListener("keyup", (e) => {
-  // get input text
+// Search input
+const searchUser = document.getElementById('searchUser');
+
+// Search input event listener
+searchUser.addEventListener('keyup', (e) => {
+  // Get input text
   const userText = e.target.value;
 
   if(userText !== ''){
@@ -27,4 +28,4 @@ searchUser.addEventListener("keyup", (e) => {
     // Clear profile
     ui.clearProfile();
   }
-});
+}); 
