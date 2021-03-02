@@ -10,17 +10,17 @@ class UI {
     this.wind = document.getElementById("w-wind");
   }
   paint(weather) {
-   const kelvin = weather.main.temp;
-   // change API temp info from Degrees Kelvin to Celsius
-   function KtoC(){
-     const celsius = Math.round(kelvin - 273.15).toFixed(1)
-     return celsius
-   }
+    const kelvin = weather.main.temp;
+    // change API temp info from Degrees Kelvin to Celsius
+    function KtoC() {
+      const celsius = Math.round(kelvin - 273.15).toFixed(1);
+      return celsius;
+    }
 
     this.location.textContent = weather.name;
     this.desc.textContent = weather.weather[0].description;
-   //  this.string.textContent = weather.main.temp + "°Kelvin";
-   this.string.textContent = KtoC() + "°C";
+    //  this.string.textContent = weather.main.temp + "°Kelvin";
+    this.string.textContent = KtoC() + "°C";
 
     this.icon.setAttribute(
       "src",
@@ -28,6 +28,6 @@ class UI {
     );
     this.humidity.textContent = `Relative Humidity ${weather.main.humidity}%`;
     this.dewpoint.textContent = `Wind Direction ${weather.wind.deg} degrees`;
-    this.wind.textContent = `Wind Speed ${weather.wind.speed} meters/second`
+    this.wind.textContent = `Wind Speed ${weather.wind.speed} meters/second`;
   }
 }
