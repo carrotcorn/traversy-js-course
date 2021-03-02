@@ -25,10 +25,10 @@ re = /hello/i; // i =  case insensitive
 // console.log(result);
 
 // match() - Return result array or null
-// const str = 'Hello There';
+// const str = 'Hello There'; //string that i want to match to re
 // const result = str.match(re);
 // console.log(result);
-
+                                                         
 // search() - Returns index of the first match if not found retuns -1
 // const str = 'Brad Hello There';
 // const result = str.search(re);
