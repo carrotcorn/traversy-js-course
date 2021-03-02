@@ -25,7 +25,7 @@ try {
   // console.log(e.name);
   // console.log(e instanceof TypeError);
 } finally {
-  console.log('Finally runs reguardless of result...');
+  console.log('Finally runs regardless of result...');
 }
 
 console.log('Program continues...');
