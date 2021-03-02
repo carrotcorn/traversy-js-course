@@ -16,7 +16,7 @@ class UI {
       const celsius = Math.round(kelvin - 273.15).toFixed(1);
       return celsius;
     }
-    //
+   
     //getting wind direction in words
     function windDirection() {
       const degreeCompass = weather.wind.deg;
