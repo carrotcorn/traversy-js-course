@@ -26,8 +26,8 @@ class UI {
       "src",
       `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`
     );
-    this.humidity.textContent = `Relative Humidity ${weather.main.humidity}`;
+    this.humidity.textContent = `Relative Humidity ${weather.main.humidity}%`;
     this.dewpoint.textContent = `Wind Direction ${weather.wind.deg} degrees`;
-    this.wind.textContent = `Wind Speed ${weather.wind.speed}meters/second`
+    this.wind.textContent = `Wind Speed ${weather.wind.speed} meters/second`
   }
 }
