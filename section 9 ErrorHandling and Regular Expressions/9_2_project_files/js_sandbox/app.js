@@ -1,4 +1,4 @@
-let re;
+let re; // for regular expressions
 re = /hello/;
 re = /hello/i; // i =  case insensitive
 // re = /hello/g; // Global search
