@@ -49,7 +49,6 @@ class UI {
     this.desc.textContent = weather.weather[0].description;
     //  this.string.textContent = weather.main.temp + "°Kelvin";
     this.string.textContent = KtoC() + "°C";
-
     this.icon.setAttribute(
       "src",
       `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`
@@ -62,3 +61,4 @@ class UI {
     //  this.wind.textContent = `Wind Speed ${weather.wind.speed} meters/second`;
   }
 }
+
