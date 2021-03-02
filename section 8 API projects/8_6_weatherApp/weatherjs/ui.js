@@ -13,7 +13,7 @@ class UI {
    const kelvin = weather.main.temp;
    // change API temp info from Degrees Kelvin to Celsius
    function KtoC(){
-     const celsius = Math.round(kelvin - 273.15).toFixed(2)
+     const celsius = Math.round(kelvin - 273.15).toFixed(1)
      return celsius
    }
 
