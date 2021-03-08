@@ -1,3 +1,4 @@
+//singletons never return more than one instance
 const Singleton = (function () {
   let instance;
 
