@@ -61,7 +61,7 @@ members.push(factory.createMember("John Doe", "simple"));
 members.push(factory.createMember("Chris Jackson", "super"));
 members.push(factory.createMember("Janice Williams", "simple"));
 members.push(factory.createMember("Tom Smith", "standard"));
-//figure out how to do error handling for this
+//figure out how to do error handling for a non existent membership type
 members.push(factory.createMember("Eric Bourne", "sduper"));
 
 console.log(members);
