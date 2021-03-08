@@ -19,6 +19,7 @@ const Singleton = (function () {
   };
 })();
 
+// instantiate object
 const instanceA = Singleton.getInstance();
 const instanceB = Singleton.getInstance();
 
