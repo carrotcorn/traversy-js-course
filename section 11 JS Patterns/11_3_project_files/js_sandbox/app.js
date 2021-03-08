@@ -2,7 +2,7 @@ const Singleton = (function() {
   let instance;
 
   function createInstance() {
-    const object = new Object({name:'Brad'});
+    const object = new Object({name:'Eric'});
     return object;
   }
 
