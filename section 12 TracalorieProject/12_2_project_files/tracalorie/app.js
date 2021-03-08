@@ -49,9 +49,9 @@ const ItemCtrl = (function () {
 //
 //UI controller
 const UICtrl = (function () {
-   const UIselectors = {
-      itemList: '#item-list'
-   }
+  const UIselectors = {
+    itemList: "#item-list",
+  };
   // Public methods
   return {
     populateItemList: function (items) {
@@ -78,6 +78,9 @@ const UICtrl = (function () {
 //
 //App controller
 const App = (function (ItemCtrl, UICtrl) {
+  //load event listeners
+  const loadEventListeners = function () {};
+
   //Public methods
   return {
     init: function () {
