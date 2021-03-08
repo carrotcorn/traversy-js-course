@@ -9,7 +9,10 @@ function MemberFactory() {
     } else if (type === "super") {
       member = new SuperMembership(name);
     }
+    //  else if (type !== "simple" || type !== "standard" || type !== "super") {
 
+    // }
+    // ** how to do error handling with this???**
     member.type = type;
 
     member.define = function () {
@@ -17,7 +20,7 @@ function MemberFactory() {
 
       console.log(`${this.name} (${this.type}): ${this.cost}`);
 
-      document.querySelector("#list").innerHTML += output;
+      document.querySelector("#list").innerHTML += output; //+= outputs multiple memberships in the UI
     };
 
     return member;
@@ -50,7 +53,7 @@ members.push(factory.createMember("John Doe", "simple"));
 members.push(factory.createMember("Chris Jackson", "super"));
 members.push(factory.createMember("Janice Williams", "simple"));
 members.push(factory.createMember("Tom Smith", "standard"));
-// members.push(factory.createMember("Eric Bourne", "sduper"));
+members.push(factory.createMember("Eric Bourne", "sduper"));
 
 console.log(members);
 
