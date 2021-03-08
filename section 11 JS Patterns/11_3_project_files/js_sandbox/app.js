@@ -7,7 +7,7 @@ const Singleton = (function() {
   }
 
   return {
-    getInstance: function() {
+    getInstance: function() { //why is this function of getInstance?
       if(!instance){
         instance = createInstance();
       }
