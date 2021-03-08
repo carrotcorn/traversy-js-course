@@ -7,7 +7,7 @@ const ItemCtrl = (function () {
     this.id = id;
     this.name = name;
     this.calories = calories;
-  };
+  }; 
   // Data Structure / State
   const data = {
     items: [
@@ -30,25 +30,40 @@ const ItemCtrl = (function () {
     currentItems: null, //when update icon selected, this item will become the current item which will be put into the form to be updated
     totalCalories: 0,
   };
+  // Public methods
   return {
     logData: function () {
       return data;
     },
   };
 })();
-
+//
+//
+//
+//
+//
+//
 //UI controller
-const UICtrl = (function () {})();
+const UICtrl = (function () {
+  // Public methods
+  return {};
+})();
+//
+//
+//
+//
+//
+//
+//
 //App controller
 const App = (function (ItemCtrl, UICtrl) {
-
-
-   return{
-      init: function(){
-         console.log("initializing app...");
-      }
-   }
+  //Public methods
+  return {
+    init: function () {
+      console.log("initializing app...");
+    },
+  };
 })(ItemCtrl, UICtrl);
 
 //initialize app
-App.init()
+App.init();
