@@ -13,19 +13,27 @@ function MemberFactory() {
 
     // }
     // ** how to do error handling with this???**
-    member.type = type;
+    try {
+      member.type = type;
+      if (!member.type) {
+        throw "no membership";
+      } else {
+        member.define = function () {
+          let output = `<ul>${this.name} (${this.type}): ${this.cost}</ul>`;
 
-    member.define = function () {
-      let output = `<ul>${this.name} (${this.type}): ${this.cost}</ul>`;
+          console.log(`${this.name} (${this.type}): ${this.cost}`);
 
-      console.log(`${this.name} (${this.type}): ${this.cost}`);
-
-      document.querySelector("#list").innerHTML += output; //+= outputs multiple memberships in the UI
-    };
+          document.querySelector("#list").innerHTML += output; //+= outputs multiple memberships in the UI
+        };
+      }
+    } catch (e) {
+      console.log(e);
+    }
 
     return member;
   };
 }
+
 //create constructor for subclasses above. ie. the SimpleMembership, StandardMembership, SuperMembership.
 
 const SimpleMembership = function (name) {
