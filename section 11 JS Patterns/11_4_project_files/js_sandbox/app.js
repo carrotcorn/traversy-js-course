@@ -19,6 +19,7 @@ function MemberFactory() {
     return member;
   }
 }
+//create constructor for subclasses above. ie. the SimpleMembership, StandardMembership, SuperMembership.
 
 const SimpleMembership = function(name) {
   this.name = name;
@@ -36,6 +37,7 @@ const SuperMembership = function(name) {
 }
 
 const members = [];
+
 //initialize MemberFactory
 const factory = new MemberFactory();
 
