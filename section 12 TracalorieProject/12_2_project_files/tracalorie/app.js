@@ -40,4 +40,15 @@ const ItemCtrl = (function () {
 //UI controller
 const UICtrl = (function () {})();
 //App controller
-const App = (function (ItemCtrl, UICtrl) {})(ItemCtrl, UICtrl);
+const App = (function (ItemCtrl, UICtrl) {
+
+
+   return{
+      init: function(){
+         console.log("initializing app...");
+      }
+   }
+})(ItemCtrl, UICtrl);
+
+//initialize app
+App.init()
