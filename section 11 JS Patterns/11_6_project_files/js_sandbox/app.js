@@ -5,13 +5,13 @@ const User = function(name) {
 
 User.prototype = {
   send: function(message, to) {
-    this.chatroom.send(message, this, to);
+    this.chatroom.send(message, this, to);// this in send() pertains to User
   },
   recieve: function(message, from) {
     console.log(`${from.name} to ${this.name}: ${message}`);
   }
 }
-
+//constructor function below
 const Chatroom = function() {
   let users = {}; // list of users
 
