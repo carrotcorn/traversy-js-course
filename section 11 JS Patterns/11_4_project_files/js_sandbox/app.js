@@ -38,7 +38,7 @@ const SuperMembership = function(name) {
 
 const members = [];
 
-//initialize MemberFactory
+//define factory by initializing MemberFactory
 const factory = new MemberFactory();
 
 members.push(factory.createMember('John Doe', 'simple'));
