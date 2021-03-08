@@ -13,7 +13,11 @@ function MemberFactory() {
     member.type = type;
 
     member.define =  function() {
+      console.log(`${this.name} (${this.type}): ${this.cost}`);let output = `<ul>${this.name} (${this.type}): ${this.cost}</ul>`;
+
       console.log(`${this.name} (${this.type}): ${this.cost}`);
+
+      document.querySelector("#list").innerHTML += output;
     }
 
     return member;
