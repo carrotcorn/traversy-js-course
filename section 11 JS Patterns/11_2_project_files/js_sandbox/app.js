@@ -1,11 +1,12 @@
 // Basic structure
-// below is an "iffy" - immediately invoked function expression that runs right away. wrapping in () makes the function run immediately
+//
+// below is an "IIFE(iffy)" - immediately invoked function expression that runs right away. wrapping in () makes the function run immediately
 
 // (function() {
-//   // Declare private vars and functions
+//   // Declare private vars and functions here
 
 //   return {
-//     // Declare public var and functions
+//     // Declare public var and functions here
 //   }
 // })();
 
