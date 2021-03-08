@@ -1,4 +1,5 @@
 // Basic structure
+// below is an "iffy" - immediately invoked function expression that runs right away. wrapping in () makes the function run immediately
 
 // (function() {
 //   // Declare private vars and functions
@@ -31,16 +32,16 @@
 // console.log(UICtrl.text);
 
 // REVEALING MODULE PATTERN
-const ItemCtrl = (function() {
+const ItemCtrl = (function () {
   let data = [];
 
   function add(item) {
     data.push(item);
-    console.log('Item Added....');
+    console.log("Item Added....");
   }
 
   function get(id) {
-    return data.find(item => {
+    return data.find((item) => {
       return item.id === id;
     });
   }
@@ -48,9 +49,9 @@ const ItemCtrl = (function() {
   return {
     add: add,
     // get: get
-  }
+  };
 })();
 
-ItemCtrl.add({id: 1, name: 'John'});
-ItemCtrl.add({id: 2, name: 'Mark'});
+ItemCtrl.add({ id: 1, name: "John" });
+ItemCtrl.add({ id: 2, name: "Mark" });
 console.log(ItemCtrl.get(2));
