@@ -47,13 +47,13 @@ const ItemCtrl = (function () {
       return item.id === id;
     });
   }
-
+  //everything in the until this point is private
   return {
-    add: add,
-    // get: get
+    add: add, //add is set to add.
+    get: get, // get set to get to reveal the methods
   };
 })();
 
 ItemCtrl.add({ id: 1, name: "John" });
 ItemCtrl.add({ id: 2, name: "Mark" });
-// console.log(ItemCtrl.get(2));
+console.log(ItemCtrl.get(2));
