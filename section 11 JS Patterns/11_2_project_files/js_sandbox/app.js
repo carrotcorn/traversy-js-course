@@ -10,31 +10,32 @@
 //   }
 // })();
 
-// STANDARD MODULE PATTERN
-// const UICtrl = (function() {
-//   let text = 'Hello World';
+// // STANDARD MODULE PATTERN
+// const UICtrl = (function () {
+//   let text = "Hello World";
 
-//   const changeText = function() {
-//     const element = document.querySelector('h1');
+//   const changeText = function () {
+//     const element = document.querySelector("h1");
 //     element.textContent = text;
-//   }
+//   };
 
 //   return {
-//     callChangeText: function() {
+//     callChangeText: function () {
 //       changeText();
 //       // console.log(text);
-//     }
-//   }
+//     },
+//   };
 // })();
 
-// UICtrl.callChangeText();
+// // UICtrl.callChangeText();
 // // UICtrl.changeText();
 
 // console.log(UICtrl.text);
 
 // REVEALING MODULE PATTERN
 const ItemCtrl = (function () {
-  let data = [];
+  //let _data = [] //private variable "_var" note that it is a private variable
+  let data = []; //private variable
 
   function add(item) {
     data.push(item);
@@ -55,4 +56,4 @@ const ItemCtrl = (function () {
 
 ItemCtrl.add({ id: 1, name: "John" });
 ItemCtrl.add({ id: 2, name: "Mark" });
-console.log(ItemCtrl.get(2));
+// console.log(ItemCtrl.get(2));
