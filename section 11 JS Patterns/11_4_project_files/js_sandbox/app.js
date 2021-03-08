@@ -13,7 +13,11 @@ function MemberFactory() {
     member.type = type;
 
     member.define = function () {
+      let output = `<ul>${this.name} (${this.type}): ${this.cost}</ul>`;
+
       console.log(`${this.name} (${this.type}): ${this.cost}`);
+
+      document.querySelector("#list").innerHTML += output;
     };
 
     return member;
@@ -46,6 +50,7 @@ members.push(factory.createMember("John Doe", "simple"));
 members.push(factory.createMember("Chris Jackson", "super"));
 members.push(factory.createMember("Janice Williams", "simple"));
 members.push(factory.createMember("Tom Smith", "standard"));
+// members.push(factory.createMember("Eric Bourne", "sduper"));
 
 console.log(members);
 
