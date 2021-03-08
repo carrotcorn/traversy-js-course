@@ -3,7 +3,7 @@ function EventObserver() {
 }
 
 EventObserver.prototype = {
-  subscribe: function (fn) {
+  subscribe: function (fn) { //function of an object property?
     this.observers.push(fn);
     console.log(`You are now subscribed to ${fn.name}`);
   },

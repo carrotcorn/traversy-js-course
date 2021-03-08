@@ -9,9 +9,9 @@ class EventObserver {
   }
 
   unsubscribe(fn) {
-     // Filter out from the list whatever matches the callback function. If there is no match, the callback gets to stay on the list. The filter returns a new list and reassigns the list of observers.
-     this.observers = this.observers.filter(function(item){
-      if(item !== fn) {
+    // Filter out from the list whatever matches the callback function. If there is no match, the callback gets to stay on the list. The filter returns a new list and reassigns the list of observers.
+    this.observers = this.observers.filter(function (item) {
+      if (item !== fn) {
         return item;
       }
     });
@@ -19,41 +19,40 @@ class EventObserver {
   }
 
   fire() {
-    this.observers.forEach(function(item) {
-      item.call();
+    this.observers.forEach(function (item) {
+      item.call(); //With call(), an object can use a method belonging to another object. Used to invoke (call) a method with an owner object as an argument (parameter).
     });
   }
 }
 
-
 const click = new EventObserver();
 
 // Event Listeners
-document.querySelector('.sub-ms').addEventListener('click', function() {
+document.querySelector(".sub-ms").addEventListener("click", function () {
   click.subscribe(getCurMilliseconds);
 });
 
-document.querySelector('.unsub-ms').addEventListener('click', function() {
+document.querySelector(".unsub-ms").addEventListener("click", function () {
   click.unsubscribe(getCurMilliseconds);
 });
 
-document.querySelector('.sub-s').addEventListener('click', function() {
+document.querySelector(".sub-s").addEventListener("click", function () {
   click.subscribe(getCurSeconds);
 });
 
-document.querySelector('.unsub-s').addEventListener('click', function() {
+document.querySelector(".unsub-s").addEventListener("click", function () {
   click.unsubscribe(getCurSeconds);
 });
 
-document.querySelector('.fire').addEventListener('click', function() {
+document.querySelector(".fire").addEventListener("click", function () {
   click.fire();
 });
 
 // Click Handler
-const getCurMilliseconds = function() {
+const getCurMilliseconds = function () {
   console.log(`Current Milliseconds: ${new Date().getMilliseconds()}`);
-}
+};
 
-const getCurSeconds = function() {
+const getCurSeconds = function () {
   console.log(`Current Seconds: ${new Date().getSeconds()}`);
-}
+};
