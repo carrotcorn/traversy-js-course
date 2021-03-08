@@ -26,5 +26,31 @@ const homeState = function (page) {
 // about state
 const aboutState = function (page) {
   document.querySelector("#heading").textContent = "about us";
-  document.querySelector("#content").innerHTML = `<p>This is the about page dawg</p>`
+  document.querySelector(
+    "#content"
+  ).innerHTML = `<p>This is the about page dawg</p>`;
 };
+
+// contact state
+const contactState = function (page) {
+  document.querySelector("#heading").textContent = "contact us";
+  document.querySelector("#content").innerHTML = `
+  <form>
+    <div class="form-group">
+      <label>Name</label>
+      <input type="text" class="form-control">
+    </div>
+    <div class="form-group">
+    <label>Email address</label>
+    <input type="email" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+`;
+};
+
+//Instantiate pageState
+const page = new PageState();
+
+//init the first state
+page.init();
