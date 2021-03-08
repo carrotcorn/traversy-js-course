@@ -7,9 +7,10 @@ const ItemCtrl = (function () {
     this.id = id;
     this.name = name;
     this.calories = calories;
-  }; 
+  };
   // Data Structure / State
   const data = {
+    //can come from api later on
     items: [
       {
         id: 0,
@@ -32,6 +33,9 @@ const ItemCtrl = (function () {
   };
   // Public methods
   return {
+    getItems: function () {
+      return data.items;
+    },
     logData: function () {
       return data;
     },
@@ -45,8 +49,25 @@ const ItemCtrl = (function () {
 //
 //UI controller
 const UICtrl = (function () {
+   const UIselectors = {
+      itemList: '#item-list'
+   }
   // Public methods
-  return {};
+  return {
+    populateItemList: function (items) {
+      let html = "";
+      items.forEach((item) => {
+        html += `<li class="collection-item" id="item-${item.id}">
+           <strong>${item.name}: </strong> <em>${item.calories}   Calories</em>
+           <a href="#" class="secondary-content">
+             <i class="edit-item fa fa-pencil"></i>
+           </a>
+         </li>`;
+      });
+      // Insert list items
+      document.querySelector(UIselectors.itemList).innerHTML = html;
+    },
+  };
 })();
 //
 //
@@ -60,7 +81,11 @@ const App = (function (ItemCtrl, UICtrl) {
   //Public methods
   return {
     init: function () {
-      console.log("initializing app...");
+      // fetch items from data structure
+      const items = ItemCtrl.getItems();
+
+      // populate list with items
+      UICtrl.populateItemList(items);
     },
   };
 })(ItemCtrl, UICtrl);
