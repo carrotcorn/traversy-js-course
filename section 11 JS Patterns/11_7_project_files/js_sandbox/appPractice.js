@@ -1,3 +1,6 @@
+const storage = new Storage();
+const contactData = storage.getContactData();
+
 const PageState = function () {
   let currentState = new homeState(this);
 
@@ -33,16 +36,17 @@ const aboutState = function (page) {
 
 // contact state
 const contactState = function (page) {
-  document.querySelector("#heading").textContent = "contact us";
+  document.querySelector("#heading").textContent =
+    "contact us (try to add local storage as challenge)";
   document.querySelector("#content").innerHTML = `
   <form>
     <div class="form-group">
       <label>Name</label>
-      <input type="text" class="form-control">
+      <input id="name" type="text" class="form-control">
     </div>
     <div class="form-group">
     <label>Email address</label>
-    <input type="email" class="form-control">
+    <input id="email" type="email" class="form-control">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
   </form>
@@ -54,3 +58,33 @@ const page = new PageState();
 
 //init the first state
 page.init();
+
+//UI variables
+const home = document.getElementById("home"),
+  about = document.getElementById("about"),
+  contact = document.getElementById("contact");
+
+// Home State
+home.addEventListener("click", (e) => {
+  page.change(new homeState());
+
+  e.preventDefault();
+});
+
+//about state
+about.addEventListener("click", (e) => {
+  page.change(new aboutState());
+
+  e.preventDefault();
+});
+
+//Contact state
+contact.addEventListener("click", (e) => {
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  contact.change(new contactState());
+
+  storage.setContactData(name, email);
+
+  e.preventDefault();
+});
