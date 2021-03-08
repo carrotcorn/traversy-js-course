@@ -1,3 +1,4 @@
+//substantially less code, less complicated
 class EventObserver {
   constructor() {
     this.observers = [];
