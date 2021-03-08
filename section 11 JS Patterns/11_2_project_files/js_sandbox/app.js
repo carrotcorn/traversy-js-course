@@ -50,7 +50,8 @@ const ItemCtrl = (function () {
   //everything in the until this point is private
   return {
     add: add, //add is set to add.
-    get: get, // get set to get to reveal the methods
+    // get: get, // get set to get to reveal the methods// if this get is commented out, it makes it private
+    // get:get = "Uncaught TypeError: ItemCtrl.get is not a function" error
   };
 })();
 
