@@ -1,53 +1,54 @@
 function MemberFactory() {
-  this.createMember = function(name, type) {
+  this.createMember = function (name, type) {
     let member;
 
-    if(type === 'simple') {
+    if (type === "simple") {
       member = new SimpleMembership(name);
-    } else if (type === 'standard') {
+    } else if (type === "standard") {
       member = new StandardMembership(name);
-    } else if (type === 'super') {
+    } else if (type === "super") {
       member = new SuperMembership(name);
     }
 
     member.type = type;
 
-    member.define =  function() {
+    member.define = function () {
       console.log(`${this.name} (${this.type}): ${this.cost}`);
-    }
+    };
 
     return member;
-  }
+  };
 }
 //create constructor for subclasses above. ie. the SimpleMembership, StandardMembership, SuperMembership.
 
-const SimpleMembership = function(name) {
+const SimpleMembership = function (name) {
   this.name = name;
-  this.cost = '$5';
-}
+  this.cost = "$5";
+};
 
-const StandardMembership = function(name) {
+const StandardMembership = function (name) {
   this.name = name;
-  this.cost = '$15';
-}
+  this.cost = "$15";
+};
 
-const SuperMembership = function(name) {
+const SuperMembership = function (name) {
   this.name = name;
-  this.cost = '$25';
-}
+  this.cost = "$25";
+};
 
 const members = [];
 
 //define factory by initializing MemberFactory
 const factory = new MemberFactory();
 
-members.push(factory.createMember('John Doe', 'simple'));
-members.push(factory.createMember('Chris Jackson', 'super'));
-members.push(factory.createMember('Janice Williams', 'simple'));
-members.push(factory.createMember('Tom Smith', 'standard'));
+//add member to members array
+members.push(factory.createMember("John Doe", "simple"));
+members.push(factory.createMember("Chris Jackson", "super"));
+members.push(factory.createMember("Janice Williams", "simple"));
+members.push(factory.createMember("Tom Smith", "standard"));
 
-// console.log(members);
+console.log(members);
 
-members.forEach(function(member) {
-  member.define();
+members.forEach(function (member) {
+  member.define(); //calls define from above on line 15 outputting the name, price, and membership type
 });
