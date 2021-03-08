@@ -52,6 +52,21 @@ const contactState = function (page) {
   </form>
 `;
 };
+// class Storage {
+//    constructor() {
+//      this.name;
+//      this.email;
+//    }
+ 
+//    getContactData() {
+//      return { name: this.name, email: this.email };
+//    }
+//    setContactData(name, email) {
+//      localStorage.setItem("name", name);
+//      localStorage.setItem("email", email);
+//    }
+//  }
+ 
 
 //Instantiate pageState
 const page = new PageState();
@@ -82,6 +97,7 @@ about.addEventListener("click", (e) => {
 contact.addEventListener("click", (e) => {
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
+
   contact.change(new contactState());
 
   storage.setContactData(name, email);
