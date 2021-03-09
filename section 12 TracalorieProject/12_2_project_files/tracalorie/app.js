@@ -52,6 +52,8 @@ const UICtrl = (function () {
   const UISelectors = {
     itemList: "#item-list",
     addBtn: ".add-btn",
+    itemNameInput: "#item-name",
+    itemCaloriesInput: "#item-calories",
   };
   // Public methods
   return {
@@ -69,6 +71,13 @@ const UICtrl = (function () {
       document.querySelector(UISelectors.itemList).innerHTML = html;
     },
     // being imported into the App Controller for loading event listener
+    getItemInput: function () {
+      //want to return object with the name a calories
+      return {
+        name: document.querySelector(UISelectors.itemNameInput).value,
+        calories: document.querySelector(UISelectors.itemCaloriesInput).value,
+      };
+    },
     getSelectors: function () {
       return UISelectors;
     },
@@ -95,7 +104,8 @@ const App = (function (ItemCtrl, UICtrl) {
   };
   // Add item submit
   const itemAddSubmit = function (e) {
-    console.log("added");
+    const input = UICtrl.getItemInput();
+    console.log(input);
     e.preventDefault();
   };
 
