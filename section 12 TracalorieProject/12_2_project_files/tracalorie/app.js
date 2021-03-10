@@ -56,6 +56,20 @@ const ItemCtrl = (function () {
       });
       return found;
     },
+    updateListItem: function (name, calories) {
+      //turn calories to a number since calories is a string
+      calories = parseInt(calories);
+      let found = null;
+      data.items.forEach((item) => {
+        if (item.id === data.currentItem.id) {
+          item.name = name;
+          item.calories = calories;
+          found = item;
+        }
+      });
+      //updates in data structure. can check with ItemCtrl.logData() in the browser console
+      return found;
+    },
     setCurrentItem: function (item) {
       data.currentItem = item;
     },
@@ -87,6 +101,7 @@ const ItemCtrl = (function () {
 const UICtrl = (function () {
   const UISelectors = {
     itemList: "#item-list",
+    listItems: "#item-list li",
     addBtn: ".add-btn",
     updateBtn: ".update-btn",
     deleteBtn: ".delete-btn",
@@ -140,6 +155,24 @@ const UICtrl = (function () {
         .querySelector(UISelectors.itemList)
         .insertAdjacentElement("beforeend", li);
     },
+    updateListItem: function (item) {
+      let listItems = document.querySelectorAll(UISelectors.listItems);
+
+      //outputs node list, turn it into an array
+      listItems = Array.from(listItems);
+      listItems.forEach((listItem) => {
+        const itemID = listItem.getAttribute("id");
+
+        if (itemID === `item-${item.id}`) {
+          document.querySelector(
+            `#${itemID}`
+          ).innerHTML = `<strong>${item.name}: </strong> <em>${item.calories} Calories</em>
+          <a href="#" class="secondary-content">
+            <i class="edit-item fa fa-pencil"></i>
+          </a>`;
+        }
+      });
+    },
     clearInput: function () {
       document.querySelector(UISelectors.itemNameInput).value = "";
       document.querySelector(UISelectors.itemCaloriesInput).value = "";
@@ -189,11 +222,24 @@ const App = (function (ItemCtrl, UICtrl) {
     document
       .querySelector(UISelectors.addBtn)
       .addEventListener("click", itemAddSubmit);
+    // Disable submit on enter, manually want to click the btn
+    document.addEventListener("key", (e) => {
+      if (e.keyCode === 13 || e.which === 13) {
+        //13 is the keycode for "enter/return"
+        e.preventDefault();
+        return false;
+      }
+    });
 
     // Edit icon click event, in querySelector(UISelectors.itemList), use itemList because i want to target the id of the container that holds the edit btn
     document
       .querySelector(UISelectors.itemList)
       .addEventListener("click", itemEditClick);
+
+    //Update Item Event
+    document
+      .querySelector(UISelectors.updateBtn)
+      .addEventListener("click", itemUpdateSubmit);
   };
 
   // Add item submit
@@ -221,7 +267,7 @@ const App = (function (ItemCtrl, UICtrl) {
 
     e.preventDefault();
   };
-  // click edit Item 
+  // click edit Item
   const itemEditClick = function (e) {
     //so the click doesn't effect the entire list item and just the icon, use this event delegation
     if (e.target.classList.contains("edit-item")) {
@@ -245,6 +291,18 @@ const App = (function (ItemCtrl, UICtrl) {
       //add item to form
       UICtrl.addItemToForm();
     }
+    e.preventDefault();
+  };
+  //update item submit
+  const itemUpdateSubmit = function (e) {
+    //get item input
+    const input = UICtrl.getItemInput();
+
+    //update item
+    const updatedItem = ItemCtrl.updateListItem(input.name, input.calories);
+
+    //update UI
+    UICtrl.updateListItem(updatedItem);
     e.preventDefault();
   };
 
