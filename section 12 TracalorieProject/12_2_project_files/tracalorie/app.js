@@ -45,6 +45,23 @@ const ItemCtrl = (function () {
 
       return newItem;
     },
+    getItemById: function (id) {
+      let found = null;
+
+      //loop through items
+      data.items.forEach((item) => {
+        if (item.id === id) {
+          found = item;
+        }
+      });
+      return found;
+    },
+    setCurrentItem: function (item) {
+      data.currentItem = item;
+    },
+    getCurrentItem: function () {
+      return data.currentItem;
+    },
     getTotalCalories: function () {
       //loop thru array and count the calories
       let total = 0;
@@ -73,6 +90,7 @@ const UICtrl = (function () {
     addBtn: ".add-btn",
     updateBtn: ".update-btn",
     deleteBtn: ".delete-btn",
+    backBtn: ".back-btn",
     itemNameInput: "#item-name",
     itemCaloriesInput: "#item-calories",
     totalCalories: ".total-calories",
@@ -126,14 +144,33 @@ const UICtrl = (function () {
       document.querySelector(UISelectors.itemNameInput).value = "";
       document.querySelector(UISelectors.itemCaloriesInput).value = "";
     },
+    addItemToForm: function () {
+      document.querySelector(
+        UISelectors.itemNameInput
+      ).value = ItemCtrl.getCurrentItem().name;
+      document.querySelector(
+        UISelectors.itemCaloriesInput
+      ).value = ItemCtrl.getCurrentItem().calories;
+      UICtrl.showEditState();
+    },
     hideList: function () {
       document.querySelector(UISelectors.itemList).style.display = "none";
     },
     showTotalCalories: function (total) {
       document.querySelector(UISelectors.totalCalories).textContent = total;
     },
-    clearEditState: function(){
-      UICtrl.clearInput()
+    clearEditState: function () {
+      UICtrl.clearInput();
+      document.querySelector(UISelectors.updateBtn).style.display = "none";
+      document.querySelector(UISelectors.deleteBtn).style.display = "none";
+      document.querySelector(UISelectors.backBtn).style.display = "none";
+      document.querySelector(UISelectors.addBtn).style.display = "inline";
+    },
+    showEditState: function () {
+      document.querySelector(UISelectors.updateBtn).style.display = "inline";
+      document.querySelector(UISelectors.deleteBtn).style.display = "inline";
+      document.querySelector(UISelectors.backBtn).style.display = "inline";
+      document.querySelector(UISelectors.addBtn).style.display = "none";
     },
     getSelectors: function () {
       return UISelectors;
@@ -152,6 +189,11 @@ const App = (function (ItemCtrl, UICtrl) {
     document
       .querySelector(UISelectors.addBtn)
       .addEventListener("click", itemAddSubmit);
+
+    // Edit icon click event, in querySelector(UISelectors.itemList), use itemList because i want to target the id of the container that holds the edit btn
+    document
+      .querySelector(UISelectors.itemList)
+      .addEventListener("click", itemEditClick);
   };
 
   // Add item submit
@@ -179,10 +221,38 @@ const App = (function (ItemCtrl, UICtrl) {
 
     e.preventDefault();
   };
+  // click edit Item 
+  const itemEditClick = function (e) {
+    //so the click doesn't effect the entire list item and just the icon, use this event delegation
+    if (e.target.classList.contains("edit-item")) {
+      // console.log("edit item");
+      const listId = e.target.parentNode.parentNode.id; // gets ID within array
+
+      // break into array
+      const listIdArray = listId.split("-");
+
+      //get actual ID
+      const id = parseInt(listIdArray[1]);
+
+      //get item
+      const itemToEdit = ItemCtrl.getItemById(id);
+
+      // console.log(itemToEdit);
+
+      //set current item
+      ItemCtrl.setCurrentItem(itemToEdit);
+
+      //add item to form
+      UICtrl.addItemToForm();
+    }
+    e.preventDefault();
+  };
 
   //Public methods
   return {
     init: function () {
+      // set initial state/clear state to be first loaded
+      UICtrl.clearEditState();
       // fetch items from data structure
       const items = ItemCtrl.getItems();
 
