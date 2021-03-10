@@ -3,23 +3,22 @@ const StorageCtrl = (function () {
   //public methods
   return {
     storeItem: function (item) {
-      let items = [];
-      // check if any items in LocalStorage
+      let items;
+      // Check if any items in ls
       if (localStorage.getItem("items") === null) {
         items = [];
-
-        //push new item
+        // Push new item
         items.push(item);
-
-        //set Local storage
+        // Set ls
         localStorage.setItem("items", JSON.stringify(items));
       } else {
+        // Get what is already in ls
         items = JSON.parse(localStorage.getItem("items"));
 
-        //push new item
+        // Push new item
         items.push(item);
 
-        // reset local storage
+        // Re set ls
         localStorage.setItem("items", JSON.stringify(items));
       }
     },
@@ -28,7 +27,7 @@ const StorageCtrl = (function () {
       if (localStorage.getItem("items") === null) {
         items = [];
       } else {
-        items - JSON.parse(localStorage.getItem("items"));
+        items = JSON.parse(localStorage.getItem("items"));
       }
       return items;
     },
@@ -48,11 +47,12 @@ const ItemCtrl = (function () {
   const data = {
     //can come from api later on
     // items: [
-    //   { id: 0, name: "Steak Dinner", calories: 1200 },
-    //   { id: 1, name: "Cookie", calories: 400 },
-    //   { id: 2, name: "Eggs", calories: 300 },
+    //   // { id: 0, name: "Steak Dinner", calories: 1200 },
+    //   // { id: 1, name: "Cookie", calories: 400 },
+    //   // { id: 2, name: "Eggs", calories: 300 },
     // ],
     items: StorageCtrl.getItemsFromStorage(),
+
     currentItems: null, //when update icon selected, this item will become the current item which will be put into the form to be updated
     totalCalories: 0,
   };
