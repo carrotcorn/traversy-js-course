@@ -70,6 +70,17 @@ const ItemCtrl = (function () {
       //updates in data structure. can check with ItemCtrl.logData() in the browser console
       return found;
     },
+    deleteItem: function (id) {
+      //get ids
+      const ids = data.items.map((item) => {
+        return item.id;
+      });
+      //get index
+      const index = ids.indexOf(id);
+
+      //remove item
+      data.items.splice(index, 1);
+    },
     setCurrentItem: function (item) {
       data.currentItem = item;
     },
@@ -240,6 +251,16 @@ const App = (function (ItemCtrl, UICtrl) {
     document
       .querySelector(UISelectors.updateBtn)
       .addEventListener("click", itemUpdateSubmit);
+
+    //delete Item Event
+    document
+      .querySelector(UISelectors.deleteBtn)
+      .addEventListener("click", itemDeleteSubmit);
+
+    // back btn event to escape edit menu
+    document
+      .querySelector(UISelectors.backBtn)
+      .addEventListener("click", UICtrl.clearEditState);
   };
 
   // Add item submit
@@ -267,6 +288,7 @@ const App = (function (ItemCtrl, UICtrl) {
 
     e.preventDefault();
   };
+
   // click edit Item
   const itemEditClick = function (e) {
     //so the click doesn't effect the entire list item and just the icon, use this event delegation
@@ -293,6 +315,7 @@ const App = (function (ItemCtrl, UICtrl) {
     }
     e.preventDefault();
   };
+
   //update item submit
   const itemUpdateSubmit = function (e) {
     //get item input
@@ -311,6 +334,17 @@ const App = (function (ItemCtrl, UICtrl) {
     UICtrl.showTotalCalories(totalCalories);
 
     UICtrl.clearEditState();
+    e.preventDefault();
+  };
+
+  //delete btn event
+  const itemDeleteSubmit = function (e) {
+    //get current item ID
+    const currentItem = ItemCtrl.getCurrentItem();
+
+    //delete from data structure
+    ItemCtrl.deleteItem(currentItem.id);
+
     e.preventDefault();
   };
 
